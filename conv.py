@@ -16,11 +16,11 @@
 # In[1]:
 
 
-import keras
-from keras.datasets import mnist
-from keras.models import Sequential
-import keras.layers as layers
-from keras.optimizers import RMSprop
+import tensorflow.keras as keras
+from tensorflow.keras.datasets import mnist
+from tensorflow.keras.models import Sequential
+import tensorflow.keras.layers as layers
+from tensorflow.keras.optimizers import RMSprop
 
 
 # Knihovny jsou úspěšně načtené. Dalším krokem bude znovu stáhnout dataset MNIST. Tento dataset je rozdělen na trénovací data a testovací data. 
