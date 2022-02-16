@@ -64,7 +64,7 @@ y_test.shape
 
 
 # Vytvoříme síť konvolučních vrstev následovaných plně propojenými. Každá konvoluce má určeno, jak velký je filtr a kolik těchto filtrů ve výsledku je. Podle nastavení okrajů se buď obrázek zmenší (šířka - velikost filtru + 1) nebo se kraje doplní nulami. Protože jsou výsledné obrázky příznaků (features) moc velké, použije se zmenšení pomocí ```AveragePooling2D``` vrstvy - tato vrstva rozdělí obrázek do čtvrečků 2x2 a vypočítá průměr. Ve svých výpočtech počtu operací tuto operaci ignorujte. V další vrstvě se 6 feature obrázků zase prožene 3x3 filtry. Pozor, na vstupu je 6 kanálů - pro každý filtr a vstupní kanál máme vlastní konvoluční filtr (v druhé vstvě máme tedy 6 * 16 3x3 filtrů), jejichž výstupy se pro všechny kanály sečtou (jak je naznačeno na obrázku)
-# ![https://i.stack.imgur.com/uDgke.gif](https://i.stack.imgur.com/uDgke.gif)
+# ![schéma konvoluce](convolution.gif)
 # 
 # Výstup druhého filtru je zase zmenšen. Pomocí Flatten vrstvy dojde k překódování 2D obrázků o 16 kanálech na 1D vektor příznaků (pouhým přeskládáním) a tento vektor je vstupem do závěrečné části, která je tvořena plně propojenými sítěmi.
 
@@ -112,4 +112,10 @@ history = model.fit(x_train, y_train,
 score = model.evaluate(x_test, y_test, verbose=0)
 print('Test loss:', score[0])
 print('Test accuracy:', score[1])
+
+
+# In[ ]:
+
+
+
 
