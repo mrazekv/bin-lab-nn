@@ -37,39 +37,7 @@ Vlastnosti sítí shrňte v __tabulce__, kde bude uveden:
 * Počet násobení v konvolučních vrstvách
 * Počet trénovacích parametrů
 
-Vytvořte X-Y (scatter) __graf__, kde na ose X bude celkový počet násobení (~energie) a na ose Y bude výsledná přesnost. Diskutujte výsledky. Pro vykreslení můžete použít Excel, nebo rovnou můžete využít Python v Jupyter notebooku. Ukázka vykreslení je
-
-```py
-import matplotlib.pyplot as plt
-
-# Data ve formatu prikon / pocet_nasobeni
-# TODO: upravte dle vlastniho uvazeni
-data_mlp = [
-    (100, 10),
-    (200, 80),
-    (300, 60)
-]
-
-data_conv = [
-    (200, 70),
-    (250, 60)
-]
-plt.figure(figsize=(8, 6))
-
-plt.scatter(*zip(*data_mlp), color="tab:orange", label="MLP sítě")
-plt.scatter(*zip(*data_conv), color="tab:green", label="Konvoluční sítě")
-
-plt.xlim(0, None)
-plt.ylim(0, None)
-plt.xlabel("Příkon [počet násobení]")
-plt.ylabel("Přesnost [%]")
-plt.legend()
-
-# plt.savefig("obrazek.pdf")
-# plt.savefig("obrazek.png")
-plt.show()
-```
-
+Vytvořte X-Y (scatter) __graf__, kde na ose X bude celkový počet násobení (~energie) a na ose Y bude výsledná přesnost. Diskutujte výsledky. Pro vykreslení můžete použít Excel, nebo rovnou můžete využít Python v Jupyter notebooku - doporučuji využít Matplotlib. Je nutné dodržet všechny vlastnosti grafů (barevné oddělení konvolučních / MLP sítí, popisky os a podobně).
 
 Do výpočtu počtu násobení v plně propojených vrstvách je nutné zahrnout: počet vstupních neuronů a počet neuronů ve vrstvě. Pro výpočet počtu násobení v konvolučních vrstvách je nutné zahrnout: velikost vstupního obrázku, počet kanálů ve vstupním obrázku, velikost filtru, počet výstupních kanálů. 
 
