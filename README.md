@@ -10,9 +10,7 @@ Projděte si teorii představenou na přednášce BIN. Dále se seznamte s prac�
 
 ## Vlastní spuštění a testování 
 Pro spuštění máte několik možností:
-
-* __DOPORUČENO__: stáhnout notebook na [Google CoLab](https://colab.research.google.com/notebook), můžete otevřít projekt přímo z Githubu (nutné zadat `mrazekv` do cesty, pak vybrat `bin-lab-nn` a příslušný notebook). Potom kliknete do boxu s kódem (kde můžete dělat změny) a pomocí Shift+Enter spustit daný blok. Pozor, je nutné postupovat postupně a nepřeskakovat kernely.
-
+* __DOPORUČENO__: stáhnout notebook na [Google CoLab](https://colab.research.google.com/notebook), můžete otevřít projekt přímo z Githubu (nutné zadat `mrazekv` do cesty, pak vybrat `bin-lab-nn` a příslušný notebook). Potom kliknete do boxu s kódem (kde můžete dělat změny) a pomocí Shift+Enter spustit daný blok. Pozor, je nutné postupovat postupně a nepřeskakovat kernely. __V menu Běh -> Změnit typ běhového prostředí__ vyberte běh na GPU.
 * z repozitáře https://github.com/mrazekv/bin-lab-nn si stáhnout Python soubory. Tyto soubory můžete pustit u sebe (nutnost Python3 + Tensorflow + Keras a nejlépe aspoň základní GPU) či na serveru merlin (pozor, je potřeba spouštět příkazem `python3.8 <nazev_skriptu>`). 
 
 
@@ -37,37 +35,37 @@ Vlastnosti sítí shrňte v __tabulce__, kde bude uveden:
 * Počet násobení v konvolučních vrstvách
 * Počet trénovacích parametrů
 
-Vytvořte X-Y (scatter) __graf__, kde na ose X bude celkový počet násobení (~energie) a na ose Y bude výsledná přesnost. Diskutujte výsledky. Pro vykreslení můžete použít Excel, nebo rovnou můžete využít Python v Jupyter notebooku. Ukázka vykreslení je
+Vytvořte X-Y (scatter) __graf__, kde na ose X bude celkový počet násobení (~energie) a na ose Y bude výsledná přesnost. 
+Diskutujte výsledky, zejména otázku, které sítě byste zvažovali pro použití. Pro vykreslení využijte Python v Jupyter notebooku. Ukázka vykreslení je
 
 ```py
 import matplotlib.pyplot as plt
+import pandas as pd
 
 # Data ve formatu prikon / pocet_nasobeni
 # TODO: upravte dle vlastniho uvazeni
-data_mlp = [
-    (100, 10),
-    (200, 80),
-    (300, 60)
-]
+df = pd.DataFrame([
+  {"type" : "mlp", "accuracy": 97.4, "MAC": 100},
+  {"type" : "mlp", "accuracy": 98.4, "MAC": 200},
+  {"type" : "conv", "accuracy": 99.4, "MAC": 200},
+])
 
-data_conv = [
-    (200, 70),
-    (250, 60)
-]
-plt.figure(figsize=(8, 6))
+fig, ax = plt.subplots(figsize=(8, 6))
 
-plt.scatter(*zip(*data_mlp), color="tab:orange", label="MLP sítě")
-plt.scatter(*zip(*data_conv), color="tab:green", label="Konvoluční sítě")
+for nn_type, label, color in [("mlp", "MLP sítě", "tab:orange"), ("conv", "Konvoluční sítě", "tab:blue")]:
+  df_tmp = df.query("type == @nn_type")
+  ax.scatter(df_tmp["MAC"], df_tmp["accuracy"], color=color, label=label)
 
-plt.xlim(0, None)
-plt.ylim(0, None)
-plt.xlabel("Příkon [počet násobení]")
-plt.ylabel("Přesnost [%]")
-plt.legend()
+ax.set(
+    xlim=(0, None),
+    ylim=(0, 100)
+    # todo
+)
+ax.legend()
 
 # plt.savefig("obrazek.pdf")
 # plt.savefig("obrazek.png")
-plt.show()
+fig.show()
 ```
 
 
