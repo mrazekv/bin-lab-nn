@@ -9,9 +9,7 @@ Projděte si teorii představenou na přednášce BIN. Dále se seznamte s prac�
 * Konvoluční sítě: https://github.com/mrazekv/bin-lab-nn/blob/master/conv.ipynb
 
 ## Vlastní spuštění a testování 
-Pro spuštění máte několik možností:
-* __DOPORUČENO__: stáhnout notebook na [Google CoLab](https://colab.research.google.com/notebook), můžete otevřít projekt přímo z Githubu (nutné zadat `mrazekv` do cesty, pak vybrat `bin-lab-nn` a příslušný notebook). Potom kliknete do boxu s kódem (kde můžete dělat změny) a pomocí Shift+Enter spustit daný blok. Pozor, je nutné postupovat postupně a nepřeskakovat kernely. __V menu Běh -> Změnit typ běhového prostředí__ vyberte běh na GPU.
-* z repozitáře https://github.com/mrazekv/bin-lab-nn si stáhnout Python soubory. Tyto soubory můžete pustit u sebe (nutnost Python3 + Tensorflow + Keras a nejlépe aspoň základní GPU) či na serveru merlin (pozor, je potřeba spouštět příkazem `python3.8 <nazev_skriptu>`). 
+__DOPORUČENO__: stáhnout notebook na [Google CoLab](https://colab.research.google.com/notebook), můžete otevřít projekt přímo z Githubu (nutné zadat `mrazekv` do cesty, pak vybrat `bin-lab-nn` a příslušný notebook). Potom kliknete do boxu s kódem (kde můžete dělat změny) a pomocí Shift+Enter spustit daný blok. Pozor, je nutné postupovat postupně a nepřeskakovat kernely. __V menu Běh -> Změnit typ běhového prostředí__ vyberte běh na GPU.
 
 
 
@@ -73,6 +71,6 @@ Do výpočtu počtu násobení v plně propojených vrstvách je nutné zahrnout
 
 
 ## Co si připravit pro hodnocení
-* Tabulka přesností + vzorec výpočtů)
+* Tabulka přesností + vzorec výpočtů
 * Graf (včetně dodržení všech náležitostí grafu)
 * Shrnutí výsledků a závěr (ústně)
